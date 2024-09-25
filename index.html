@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <style>
+            /* Style général du menu */
+.sidenav {
+    height: 100%; /* Le menu prend toute la hauteur de la page */
+    width: 0; /* Largeur initiale à 0 pour qu'il soit caché */
+    position: fixed; /* Fixé à gauche */
+    top: 0;
+    left: 0;
+    background-image: url('IMG-20240729-WA0053.jpg') ; /* Couleur de fond */
+    object-fit: cover;
+    overflow-x: hidden; /* Pas de défilement horizontal */
+    transition: 0.5s; /* Animation de la largeur lors de l'ouverture et de la fermeture */
+    padding-top: 60px; /* Distance par rapport au haut de la page */
+    z-index: 1;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+}
+
+.openbtn:hover {
+    background-color: #444;
+}
+
+/* Quand le menu est ouvert, il prend 250px de large */
+#mySidenav.open {
+    width: 250px;
+}
+/* overlay */
+
+        .carousel-container {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+            display: none; /* Le carrousel est initialement caché */
+        }
+
+        .carousel-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .carousel-container img.active {
+            opacity: 1;
+        }
+
+        /* Chapeau (div noir) */
+        .chapeau {
+            border: 1px solid white;
+            position: absolute;
+            top: 280px;
+            left: 0;
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            background-color: rgba(0, 0, 0, 1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="souhait.html">Souhait</a>
+        <a href="surprise.html">Message</a>
+        <a href="video.html">Video</a>
+        <a href="surpvt.html">Bonus😋</a>
+    </div>
+
+    <span class="openbtn" onclick="openNav()">&#9776;Menu</span>
+    
+    <div style="z-index: -100;">
+        <header>
+            <div class="header-cover">
+                <a href="iframe.html" ><div class="jtm" style="background-color: transparent;position: absolute;top: 55px;left: 80px;width: 60px;height: 60px;border-radius: 50%;">
+                </div></a>
+                <div class="msg">
+                    <p style="margin: 0;">Dans ma vie t'est une lumiere jaillissante🤍comme ce lune illumine a sa pleine lune</p>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <div class="overlay">
+         <!-- Div chapeau -->
+    <div class="chapeau" style="text-align: center;">
+        touche ici pour admirer😍😍ta beauté a moi 
+    </div>
+
+    <!-- Carrousel caché au début -->
+    <div class="carousel-container">
+        <img src="IMG-20240805-WA0018.jpg" alt="Photo 1" class="active">
+        <img src="IMG-20240729-WA0055.jpg" alt="Photo 2">
+        <img src="IMG-20240805-WA0022.jpg" alt="Photo 3">
+        <img src="IMG-20240729-WA0056.jpg" alt="Photo 5">
+        <img src="IMG-20240517-WA0031.jpg" alt="Photo 6">
+        <img src="IMG-20240729-WA0052.jpg" alt="Photo 7">
+        <img src="IMG-20240729-WA0053.jpg" alt="Photo 8">
+        <img src="IMG-20240729-WA0054.jpg" alt="Photo 9">
+        <img src="IMG-20240729-WA0057.jpg" alt="Photo 10">
+    </div>
+    </div>
+    
+
+    <script >
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.carousel-container img');
+        const totalImages = images.length;
+        let interval; // Variable pour stocker l'intervalle
+        const chapeau = document.querySelector('.chapeau');
+        const carousel = document.querySelector('.carousel-container');
+
+        function showNextImage() {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % totalImages;
+            images[currentIndex].classList.add('active');
+        }
+
+        // Fonction pour démarrer le carrousel
+        function startCarousel() {
+            chapeau.style.display = 'none'; // Cacher le div noir
+            carousel.style.display = 'block'; // Afficher le carrousel
+            interval = setInterval(showNextImage, 2000); // Lancer l'animation
+        }
+
+        // Lancer le carrousel quand on passe la souris sur le div noir
+        chapeau.addEventListener('mouseover', startCarousel);
+
+        
+    </script>
+</body>
+</html>

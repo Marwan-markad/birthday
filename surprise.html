@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz avec Célébration "Happy Birthday"</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 90%;
+            width: 500px;
+            padding: 2%;
+            background-color: #1e1e1e;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: popUp 1s ease-out;
+        }
+
+        @keyframes popUp {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 2%;
+            animation: slideIn 1s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .question {
+            margin-bottom: 2%;
+            animation: fadeIn 1s ease-in-out;
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        label {
+            display: block;
+            margin-bottom: 1%;
+            color: #e0e0e0;
+        }
+
+        input {
+            width: 100%;
+            padding: 1%;
+            border: 2px solid #333;
+            border-radius: 10px;
+            margin-bottom: 2%;
+            background-color: #2c2c2c;
+            color: #e0e0e0;
+            transition: border 0.3s, background-color 0.3s;
+        }
+
+        input:focus {
+            border-color: #ff7f50;
+            background-color: #333;
+            outline: none;
+            box-shadow: 0 0 10px rgba(255, 127, 80, 0.5);
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 1%;
+            background-color: #ff7f50;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #e67300;
+        }
+
+        #result {
+            margin-top: 2%;
+            font-size: 1.2rem;
+            font-weight: bold;
+            opacity: 0;
+            animation: resultFadeIn 1s forwards;
+        }
+
+        @keyframes resultFadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Animation de confettis */
+        .confetti {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            animation: fall 3s infinite;
+            border-radius: 50%;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(0);
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+            }
+        }
+
+        /* Message de célébration */
+        #celebration {
+            display: none;
+            margin-top: 2%;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff7f50;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #celebration audio {
+            display: none;
+        }
+
+        /* Lien animée */
+        #successLink {
+            display: none;
+            margin-top: 2%;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ff7f50;
+            text-decoration: none;
+            position: absolute;
+            right: -300px;  /* Start off-screen */
+            transition: right 1s ease-in-out;
+        }
+
+        #successLink.show {
+            display: block;
+            right: 0;  /* Slide into view */
+        }
+
+        /* Menu de retour */
+        #backMenu {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+        }
+
+        #backMenu a {
+            text-decoration: none;
+            color: #e0e0e0;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        #backMenu a:hover {
+            color: #ff7f50;
+        }
+
+        .fa-home {
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="backMenu">
+            <a href="index.html"><i class="fas fa-home"></i></a>
+        </div>
+        <h1>Quiz</h1>
+        <form id="quizForm">
+            <div class="question" id="question1">
+                <label for="q1">1. que devient nos nom combiner ?</label>
+                <input type="text" id="q1" name="q1" placeholder="Votre réponse">
+            </div>
+            <div class="question" id="question2">
+                <label for="q2">2. qu'est ce que j'aime faire en intimité ?</label>
+                <input type="text" id="q2" name="q2" placeholder="Votre réponse">
+            </div>
+            <div class="question" id="question3">
+                <label for="q3">3. mot de passe 6 lettre</label>
+                <input type="text" id="q3" name="q3" placeholder="Votre réponse">
+            </div>
+            <button type="button" id="nextButton">Suivant</button>
+        </form>
+        <div id="result"></div>
+        <div id="celebration">
+            <p>🎉 Joyeux Anniversaire ! 🎉</p>
+            <audio id="happyBirthday" src="audio_4aaed3da1c.mp3"></audio>
+            <a id="celebrationLink" href="vraimsg.html">Découvrez plus ici !</a>
+        </div>
+        <a id="successLink" href="https://example.com">Cliquez ici pour plus de détails</a>
+    </div>
+
+    <script>
+        let currentQuestion = 1;
+
+        function afficherQuestion(questionNum) {
+            const questions = document.querySelectorAll('.question');
+            questions.forEach((question) => {
+                question.style.display = 'none';
+            });
+            document.getElementById(`question${questionNum}`).style.display = 'block';
+        }
+
+        afficherQuestion(currentQuestion);
+
+        document.getElementById('nextButton').addEventListener('click', function() {
+            if (currentQuestion < 3) {
+                currentQuestion++;
+                afficherQuestion(currentQuestion);
+            } else {
+                validerReponses();
+            }
+        });
+
+        function validerReponses() {
+            const q1 = document.getElementById('q1').value.toLowerCase();
+            const q2 = document.getElementById('q2').value.toLowerCase();
+            const q3 = document.getElementById('q3').value.toLowerCase();
+
+            let score = 0;
+
+            if (q1 === 'markad'  ) {
+                score++;
+            }
+            if (q2 === 'caresse') {
+                score++;
+            }
+            if ( q3 === 'kadira') {
+                score++;
+            }
+
+            const result = document.getElementById('result');
+            const celebration = document.getElementById('celebration');
+            const successLink = document.getElementById('successLink');
+            const celebrationLink = document.getElementById('celebrationLink');
+            const happyBirthdayAudio = document.getElementById('happyBirthday');
+
+            if (score === 3) {
+                result.textContent = "Bravo, toutes les réponses sont correctes !";
+                result.style.color = 'green';
+                lancerConfettis();
+                celebration.style.display = 'block';  // Affiche la célébration
+                happyBirthdayAudio.play();  // Joue la musique
+                setTimeout(() => {
+                    celebrationLink.style.display = 'block';  // Affiche le lien de célébration
+                }, 2000);  // Lien de célébration apparaît après 2 secondes
+                setTimeout(() => {
+                    successLink.classList.add('show');  // Affiche le lien de succès avec animation
+                }, 5000);  // Attendre la fin de la célébration
+            } else {
+                result.textContent = `Vous avez ${score} bonnes réponses sur 3. Réessayez !`;
+                result.style.color = 'red';
+            }
+
+            result.style.opacity = '1';  // Affiche le résultat avec animation
+        }
+
+        // Fonction pour générer des confettis
+        function lancerConfettis() {
+            for (let i = 0; i < 100; i++) {
+                let confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.backgroundColor = getCouleurAleatoire();
+                confetti.style.left = Math.random() * 100 + "vw";
+                confetti.style.animationDuration = Math.random() * 3 + 2 + "s";
+                document.body.appendChild(confetti);
+
+                // Supprimer les confettis après la chute
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+        }
+
+        // Fonction pour générer une couleur aléatoire
+        function getCouleurAleatoire() {
+            const couleurs = ['#FF5733', '#33FF57', '#3357FF', '#FF33A1', '#FFD133'];
+            return couleurs[Math.floor(Math.random() * couleurs.length)];
+        }
+    </script>
+</body>
+</html>

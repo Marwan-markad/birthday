@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deux DIV avec défilement synchronisé</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        div.iframe {
+            height: 100%;
+        }
+
+        iframe {
+            width: 100%;
+        }
+
+        /* Style des div flottées */
+        .left, .right {
+            width: 50%; /* Largeur des divs */
+            height: 100vh; /* Pleine hauteur de la page */
+            overflow: auto; /* Permet le défilement */
+            text-align: center;
+        }
+
+        .left {
+            float: left;
+            background-color: black;
+            color: aliceblue;
+            
+        }
+
+        .right {
+            float: right;
+            background-color: black;
+            color: aliceblue;
+        }
+
+        /* Pour annuler les flottements et garder le pied de page après */
+        .clear {
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div class="all">
+        <div class="left" id="left-div"></div>
+        <div class="right" id="right-div"></div>
+    </div>
+    
+<!-- Pour éviter que le contenu après ne chevauche les div flottantes -->
+    <div class="clear"></div>
+
+    <script>
+        // Fonction pour remplir les divs avec le mot 'jtm'
+        function remplirDivAvecJTM() {
+            const leftDiv = document.getElementById('left-div');
+            const rightDiv = document.getElementById('right-div');
+
+            for (let i = 0; i < 100000; i++) { // Modifie ce chiffre pour ajuster la quantité
+                const jtmElementLeft = document.createElement('p');
+                jtmElementLeft.textContent = "je t'aime💘❤";
+                leftDiv.appendChild(jtmElementLeft);
+
+                const jtmElementRight = document.createElement('p');
+                jtmElementRight.textContent = "je t'aime💘❤";
+                rightDiv.appendChild(jtmElementRight);
+            }
+        }
+
+        // Fonction pour synchroniser le défilement entre les deux divs
+        function synchroniserDefilement() {
+            const leftDiv = document.getElementById('left-div');
+            const rightDiv = document.getElementById('right-div');
+
+            // Synchronisation lorsque l'une des divs est défilée
+            leftDiv.onscroll = function() {
+                rightDiv.scrollTop = leftDiv.scrollTop;
+            };
+            rightDiv.onscroll = function() {
+                leftDiv.scrollTop = rightDiv.scrollTop;
+            };
+        }
+
+        // Appel de la fonction lorsque la page est chargée
+        window.onload = function() {
+            remplirDivAvecJTM();  // Remplir les divs
+            synchroniserDefilement(); // Synchroniser le défilement
+        };
+    </script>
+
+</body>
+</html>

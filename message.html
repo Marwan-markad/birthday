@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: black;            
+        }
+
+
+        @keyframes example {
+            0% {left: 0px;top: 0;}
+            50% {left: 1212px;top: 0; color: red;}
+            100% {left: 1212px;top: 400px;color: blueviolet;}
+        }
+
+        div.left {
+            width: 0;
+            color:black;
+            font-size: 150px;
+            position: relative;
+            animation-name: example;
+            animation-duration: 5s;
+            animation-delay: -0s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            animation-fill-mode: both;
+            animation-timing-function: ease-in;
+        }
+
+        
+        @keyframes example2 {
+            0% {right: 150px;top: 0;}
+            50% {right: 1360px;top: 0; color: red;}
+            100% {right: 1360px;top: 400px;color: blueviolet;}
+        }
+
+            div.right {
+                width: 0;
+                color:black;
+                font-size: 150px;
+                position: absolute;
+                animation-name: example2;
+                animation-duration: 5s;
+                animation-delay: -0s;
+                animation-iteration-count: infinite;
+                animation-direction: alternate;
+                animation-fill-mode: both;
+                animation-timing-function: ease-in;
+            }   
+
+        @media screen and (max-width : 768px){
+            
+        @keyframes example {
+            0% {left: 0px;top: 0;}
+            50% {left: 280x;top: 0; color: red;}
+            100% {left: 280px;top: 100px;color: white;}
+        }
+
+        div.left {
+            width: 0;
+            color:black;
+            font-size: 80px;
+            position: relative;
+            animation-name: example;
+            animation-duration: 2s;
+            animation-delay: -0s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            animation-fill-mode: both;
+            animation-timing-function: ease-in;
+        }
+
+        
+        @keyframes example2 {
+            0% {right: 98px;top: 0;}
+            50% {right: 380x;top: 0; color: red;}
+            100% {right: 380px;top: 100px;color: white;}
+        }
+
+            div.right {
+                width: 0;
+                color:black;
+                font-size: 80px;
+                position: absolute;
+                animation-name: example2;
+                animation-duration: 2s;
+                animation-delay: -0s;
+                animation-iteration-count: infinite;
+                animation-direction: alternate;
+                animation-fill-mode: both;
+                animation-timing-function: ease-in;
+            }
+            
+            div.tooltip {
+                display: inline-block;
+                position: relative;
+                border-bottom: 7px solid red;
+                color: white;
+            }
+
+            div.tooltip .tooltiptext {
+                visibility: hidden;
+                width: 120px;
+                background-color: aliceblue;
+                color: black;
+                text-align: center;
+                border-radius: 6px;
+                padding: 5px 0;
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                margin-left: -60%;
+                z-index: 1;
+            }
+            .tooltip .tooltiptext::after {
+                content: " ";
+                position: absolute;
+                top: 100%; /* At the bottom of the tooltip */
+                left: 50%;
+                margin-left: -5px;
+                border-width: 5px;
+                border-style: solid;
+                border-color: black transparent transparent transparent;
+                }
+
+            .tooltip:hover .tooltiptext{
+                visibility: visible;
+            }
+
+
+
+
+
+
+            /*
+            
+            div.cover-question {
+                display: flex;
+                margin-top: 100px;
+                margin: 0 auto;
+                width: 40% ;
+                overflow: hidden;
+                background-color: aliceblue;
+                border-radius: 100em;
+            }
+
+            div.cover-question img {
+                height: auto;
+                object-fit: cover;
+                animation-name: image;
+                animation-duration: 10s;
+                animation-iteration-count: infinite;
+                animation-direction: alternate-reverse;
+            }
+
+            @keyframes image {
+                0% {
+                    transform: translateX(0%);
+                }
+                25% {
+                    transform: translateX(-100%);
+                }
+                50% {
+                    transform: translateX(-200%);
+                }
+                75% {
+                    transform: translateX(-300%);
+                }
+            }
+                */
+        }
+
+    </style>
+</head>
+<body>
+    <!--Désign du commencement-->
+    <div class="left">❤</div>
+    <div class="right">❤</div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="audio">
+        <!--Mon audio avec joyeux anniversaire avec quran et du roqya-->
+    </div>
+    <div class="video">
+        <!--Ma video secrete que je doit lui envoyer avec tout mes voeux de bonheur
+        ce sera l'un de deux :
+            -> ca sera un lien bien definie
+            -> ca apparait la video
+        -->
+    </div>
+    <div class="ask">
+        <!--
+            Elle doit y repondre sinon la page sinon le formulaire marchera pas 
+        -->
+    </div>
+    <!--
+    <div class="cover-question">
+        <img src="IMG-20240525-WA0024.jpg" alt="image1">
+        <img src="IMG-20240729-WA0052.jpg" alt="image2">
+        <img src="IMG-20240729-WA0053.jpg" alt="image3">
+        <img src="IMG-20240729-WA0054.jpg" alt="image4">
+    </div>
+    -->
+</body>
+</html>

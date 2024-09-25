@@ -1,0 +1,66 @@
+:root {
+    --color1 : black ;
+    --color2:  aliceblue;
+
+}
+
+
+html , body {
+    background-color: var(--color1) ;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    
+}
+
+
+
+header div.header-cover {
+    display: block;
+    height: 760px;
+    background: url('télécharger\ \(1\).jpeg') no-repeat ;
+    background-size: cover;
+    opacity: 0.9;
+    z-index: -10;
+}
+
+
+
+/*partie phone */
+@media screen and (max-width: 768px) {
+    header div.header-cover {
+    display: block;
+    height: 300px;
+    background: url('télécharger\ \(1\).jpeg') no-repeat ;
+    background-size: contain;
+    opacity: 0.9;
+    z-index: -10;
+    
+}    
+    #mySidenav.open {
+        width: 800px;
+}
+
+    @keyframes div-surf {
+        from {right: 0;}
+        to {right:150px;}
+    }
+
+    div.msg {
+        display: block;
+        border-left: 5px solid var(--color2);
+        width: 50%;
+        height: 20px;
+        float: right;
+        color: var(--color2);
+        padding: 5px 5px;
+        margin-top: 50px;
+        z-index: -1;
+    }
+
+}
+
+
+li {
+    
+}

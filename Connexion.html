@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion entre Iframes (Haut et Bas)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Styles pour organiser les iframes */
+        .iframe-container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+        }
+
+        .top-iframe, .bottom-iframe {
+            width: 100%;
+            border: none;
+        }
+
+        .top-iframe {
+            height: 30%; /* Hauteur de l'iframe du haut */
+            background-color: #f4f4f4;
+        }
+
+        .bottom-iframe {
+            height: 70%; /* Hauteur de l'iframe du bas */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Conteneur principal -->
+    <div class="iframe-container">
+        <!-- Iframe du haut avec les liens -->
+        <iframe class="top-iframe" src="iframe.html"></iframe>
+
+        <!-- Iframe du bas où le contenu sera chargé -->
+        <iframe class="bottom-iframe" name="bottomFrame" src="jtm.html"></iframe>
+    </div>
+
+</body>
+</html>
